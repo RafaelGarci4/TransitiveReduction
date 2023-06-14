@@ -106,6 +106,33 @@ Graph transitive_reduction(const Graph& G) {
     return reduced_graph;
 }
 
+// Reduz a transitividade de um grafo baseada em caminhamento
+Graph transitive_reduction_by_walk(const Graph& G) {
+    Graph reduced_graph = G;
+
+    for (const auto& node_successors : G) {
+        const string& node = node_successors.first;
+        const unordered_set<string>& successors = node_successors.second;
+
+        vector<string> successorsVec(successors.begin(), successors.end());
+
+        for (size_t i = 0; i < successorsVec.size(); i++) {
+            for (size_t j = 0; j < successorsVec.size(); j++) {
+                if (i != j) {
+                    const string& succ1 = successorsVec[i];
+                    const string& succ2 = successorsVec[j];
+
+                    if (hasPath(G, succ1, succ2)) {
+                        reduced_graph[node].erase(succ2);
+                    }
+                }
+            }
+        }
+    }
+
+    return reduced_graph;
+}
+
 // Imprime o grafo
 void print_graph(const Graph& G) {
     for (const auto& node_successors : G) {
@@ -175,16 +202,15 @@ pair<vector<string>, vector<pair<string, string>>> read_graph_from_file(const st
                 }
             }
         }
+
         file.close();
-    } else {
-        cout << "Unable to open file: " << filename << endl;
     }
 
     return make_pair(vertices, edges);
 }
 
 int main() {
-    // Lê o grafo a partir do arquivo de texto
+     // Lê o grafo a partir do arquivo de texto
     string filename = "graph.txt";
     pair<vector<string>, vector<pair<string, string>>> graphData = read_graph_from_file(filename);
     vector<string> vertices = graphData.first;
@@ -198,18 +224,18 @@ int main() {
     print_graph(graph);
     cout << endl;
 
-    // Aplica a redução de transitividade
-    Graph reduced_graph = transitive_reduction(graph);
-
-    // Imprime o grafo com a redução de transitividade
-    cout << "Grafo com Redução de Transitividade:" << endl;
-    print_graph(reduced_graph);
-    cout << endl;
-
     // Calcula e imprime o fecho transitivo do grafo original
     cout << "Fecho Transitivo do Grafo Original:" << endl;
     Graph closure = transitive_closure(graph);
     print_graph(closure);
+    cout << endl;
+
+    // Aplica a redução de transitividade
+    Graph reduced_graph = transitive_reduction_by_walk(graph);
+
+    // Imprime o grafo com a redução de transitividade
+    cout << "Grafo com Redução de Transitividade:" << endl;
+    print_graph(reduced_graph);
     cout << endl;
 
     // Calcula e imprime o fecho transitivo do grafo com redução
