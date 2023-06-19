@@ -139,7 +139,7 @@ void print_graph(const Graph& G) {
         const string& node = node_successors.first;
         const unordered_set<string>& successors = node_successors.second;
 
-        cout << "Node " << node << " -> ";
+        cout << "Vertice " << node << " -> ";
         for (const string& succ : successors) {
             cout << succ << " ";  // Imprime os sucessores do nó
         }
@@ -224,18 +224,18 @@ int main() {
     print_graph(graph);
     cout << endl;
 
-    // Calcula e imprime o fecho transitivo do grafo original
-    cout << "Fecho Transitivo do Grafo Original:" << endl;
-    Graph closure = transitive_closure(graph);
-    print_graph(closure);
-    cout << endl;
-
     // Aplica a redução de transitividade
     Graph reduced_graph = transitive_reduction_by_walk(graph);
 
-    // Imprime o grafo com a redução de transitividade
+ // Imprime o grafo com a redução de transitividade
     cout << "Grafo com Redução de Transitividade:" << endl;
-    print_graph(reduced_graph);
+   print_graph(reduced_graph);
+   cout << endl;
+
+   // Calcula e imprime o fecho transitivo do grafo original
+    cout << "Fecho Transitivo do Grafo Original:" << endl;
+    Graph closure = transitive_closure(graph);
+    print_graph(closure);
     cout << endl;
 
     // Calcula e imprime o fecho transitivo do grafo com redução

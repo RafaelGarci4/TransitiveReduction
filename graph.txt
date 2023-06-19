@@ -7,51 +7,16 @@ V F
 V G
 V H
 V I
-V J
-V K
-E A B
-E A C
-E A D
-E A E
-E A F
-E A G
-E A H
-E A I
-E A J
-E A K
+E A A
+E B A
+E C A
 E B C
-E B D
-E B E
-E B F
-E B G
-E B H
-E B I
-E B J
-E C D
-E C E
-E C F
-E C G
-E C H
-E C I
-E C J
+E B A
+E A C
 E D E
-E D F
-E D G
-E D H
-E D I
-E D J
-E E F
-E E G
-E E H
-E E I
-E E J
-E F G
-E F H
-E F I
-E F J
+E E D
 E G H
-E G I
-E G J
 E H I
-E H J
-E I J
+E G H
+E I G
+E G A
