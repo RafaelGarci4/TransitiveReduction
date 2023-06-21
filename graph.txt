@@ -1,22 +1,6 @@
 V A
 V B
 V C
-V D
-V E
-V F
-V G
-V H
-V I
-E A A
-E B A
-E C A
-E B C
-E B A
+E A B
 E A C
-E D E
-E E D
-E G H
-E H I
-E G H
-E I G
-E G A
+E B C

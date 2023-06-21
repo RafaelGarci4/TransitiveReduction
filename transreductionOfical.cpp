@@ -308,7 +308,7 @@ void Graph::printGraph()
 int main()
 {
     vector<vector<int>> adjacencyMatrix = readAdjacencyMatrix("graphArtigo.txt"); //sess 0
-   
+    vector<vector<int>> teste{{0,1,0,0,0,0},{1,0,1,1,0,0},{0,1,0,1,1,1},{0,1,1,0,0,1},{0,0,1,0,0,1},{0,0,1,1,1,0}};
     cout << "grafo com loop :\n"
          << endl;
     PrintMatrix(adjacencyMatrix);
@@ -316,7 +316,7 @@ int main()
     vector<vector<int>> nloops = removeLoops(adjacencyMatrix); // G1 & G2 sess 2
     cout << "\n sem loops :\n"
          << endl;
-    PrintMatrix(adjacencyMatrix); //
+    PrintMatrix(nloops); //
 
     tuple<vector<vector<int>>, vector<vector<int>>> dagTup = removeCycles(nloops); // sess 1
     vector<vector<int>> dag = get<0>(dagTup);
@@ -349,7 +349,7 @@ int main()
     PrintMatrix(gt1);
 
     vector<vector<int>> gt = unionAdjacencyMatrices(arestasRemovidas, gt1); //sess 6
-    cout << "\n final ?:\n"
+    cout << "\n final :\n"
          << endl;
     PrintMatrix(gt);
     return 0;
